@@ -1,0 +1,147 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "scg",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#package"
+        },
+        {
+            "include": "#messages"
+        },
+        {
+            "include": "#services"
+        }
+    ],
+    "repository": {
+        "package": {
+            "match": "\\s*(package)\\s+([\\w.]+)\\s*(;)",
+            "captures": {
+                "1": {
+                    "name": "keyword.other.scg"
+                },
+                "2": {
+                    "name": "string.unquoted.scg.package"
+                },
+                "3": {
+                    "name": "punctuation.terminator.scg"
+                }
+            }
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment",
+                    "match": "#.*"
+                }
+            ]
+        },
+        "services": {
+            "begin": "(service)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(\\{)?",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword"
+                },
+                "2": {
+                    "name": "entity.name.class"
+                }
+            },
+            "end": "\\}",
+            "patterns": [
+                {
+                    "include": "#methods"
+                }
+            ]
+        },
+        "methods": {
+            "begin": "\\s*(rpc)\\s+([a-zA-Z][a-zA-Z_0-9]*)\\s*\\(\\s*((?:[a-zA-Z][a-zA-Z_0-9]*)(?:\\.[a-zA-Z][a-zA-Z_0-9]*)*)\\s*\\)\\s*(returns)\\s*\\(\\s*((?:[a-zA-Z][a-zA-Z_0-9]*)(?:\\.[a-zA-Z][a-zA-Z_0-9]*)*)\\s*\\)\\s*",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.other.scg"
+                },
+                "2": {
+                    "name": "entity.name.function"
+                },
+                "3": {
+                    "name": "entity.name.type"
+                },
+                "4": {
+                    "name": "keyword.other.scg"
+                },
+                "5": {
+                    "name": "entity.name.type"
+                }
+            },
+            "end": "(;)",
+            "endCaptures": {
+                "1": {
+                    "name": "punctuation.terminator.proto"
+                }
+            }
+        },
+        "messages": {
+            "begin": "(message)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(\\{)?",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.other.scg"
+                },
+                "2": {
+                    "name": "entity.name.class.message.scg"
+                }
+            },
+            "end": "\\}",
+            "patterns": [
+                {
+                    "include": "#fields"
+                }
+            ]
+        },
+        "fields": {
+            "begin": "((?:map\\s*(\\<)\\s*(uint8|uint16|uint32|uint64|int8|int16|int32|int64|float32|float64|string)\\s*,\\s*(.+?)\\s*(\\>))|(?:list\\s*(\\<)\\s*(.+)\\s*(\\>))|(?:(?:[a-zA-Z][a-zA-Z_0-9]*)(?:\\.[a-zA-Z][a-zA-Z_0-9]*)*))\\s+(.+?)\\s*(=)\\s*(.+?)\\s*",
+            "beginCaptures": {
+                "1": {
+                    "name": "storage.type.scg"
+                },
+                "2": {
+                    "name": "punctuation.bracket.angle.begin"
+                },
+                "3": {
+                    "name": "variable.map.key.scg"
+                },
+                "4": {
+                    "name": "variable.map.value.scg"
+                },
+                "5": {
+                    "name": "punctuation.bracket.angle.end"
+                },
+                "6": {
+                    "name": "punctuation.bracket.angle.begin"
+                },
+                "7": {
+                    "name": "variable.array.type.scg"
+                },
+                "8": {
+                    "name": "punctuation.bracket.angle.end"
+                },
+                "9": {
+                    "name": "entity.name.field"
+                },
+                "10": {
+                    "name": "keyword.operator.assignment.scg"
+                },
+                "11": {
+                    "name": "constant.numeric.scg"
+                }
+            },
+            "end": "(;)",
+            "endCaptures": {
+                "1": {
+                    "name": "punctuation.terminator.proto"
+                }
+            }
+        }
+    },
+    "scopeName": "source.scg"
+}

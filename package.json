@@ -1,0 +1,34 @@
+{
+    "name": "scg-language",
+    "displayName": "scg-language",
+    "description": "Syntax highlighting for scg langauge",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "scg",
+                "aliases": [
+                    "scg",
+                    "scg"
+                ],
+                "extensions": [
+                    ".scg"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "scg",
+                "scopeName": "source.scg",
+                "path": "./syntaxes/scg.tmLanguage.json"
+            }
+        ]
+    }
+}
