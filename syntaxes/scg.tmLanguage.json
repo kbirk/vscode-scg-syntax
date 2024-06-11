@@ -9,6 +9,9 @@
             "include": "#package"
         },
         {
+            "include": "#typedefs"
+        },
+        {
             "include": "#messages"
         },
         {
@@ -26,6 +29,26 @@
                     "name": "string.unquoted.scg.package"
                 },
                 "3": {
+                    "name": "punctuation.terminator.scg"
+                }
+            }
+        },
+        "typedefs": {
+            "match": "\\s*(typedef)\\s+([a-zA-Z][a-zA-Z_0-9]*)\\s*(=)\\s*(uint8|uint16|uint32|uint64|int8|int16|int32|int64|float32|float64|string)\\s*(;)",
+            "captures": {
+                "1": {
+                    "name": "keyword.other.scg"
+                },
+                "2": {
+                    "name": "entity.name.class"
+                },
+                "3": {
+                    "name": "keyword.operator.assignment.scg"
+                },
+                "4": {
+                    "name": "storage.type.scg"
+                },
+                "5": {
                     "name": "punctuation.terminator.scg"
                 }
             }
@@ -99,7 +122,7 @@
             ]
         },
         "fields": {
-            "begin": "((?:map\\s*(\\<)\\s*(uint8|uint16|uint32|uint64|int8|int16|int32|int64|float32|float64|string)\\s*,\\s*(.+?)\\s*(\\>))|(?:list\\s*(\\<)\\s*(.+)\\s*(\\>))|(?:(?:[a-zA-Z][a-zA-Z_0-9]*)(?:\\.[a-zA-Z][a-zA-Z_0-9]*)*))\\s+(.+?)\\s*(=)\\s*(.+?)\\s*",
+            "begin": "((?:map\\s*(\\<)\\s*((?:[a-zA-Z][a-zA-Z_0-9]*)(?:\\.[a-zA-Z][a-zA-Z_0-9]*)*)\\s*,\\s*(.+?)\\s*(\\>))|(?:list\\s*(\\<)\\s*(.+)\\s*(\\>))|(?:(?:[a-zA-Z][a-zA-Z_0-9]*)(?:\\.[a-zA-Z][a-zA-Z_0-9]*)*))\\s+(.+?)\\s*(=)\\s*(.+?)\\s*",
             "beginCaptures": {
                 "1": {
                     "name": "storage.type.scg"
