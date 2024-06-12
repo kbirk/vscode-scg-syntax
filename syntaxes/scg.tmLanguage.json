@@ -9,6 +9,9 @@
             "include": "#package"
         },
         {
+            "include": "#enums"
+        },
+        {
             "include": "#typedefs"
         },
         {
@@ -95,6 +98,43 @@
                 },
                 "5": {
                     "name": "entity.name.type"
+                }
+            },
+            "end": "(;)",
+            "endCaptures": {
+                "1": {
+                    "name": "punctuation.terminator.proto"
+                }
+            }
+        },
+        "enums": {
+            "begin": "(enum)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(\\{)?",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.other.scg"
+                },
+                "2": {
+                    "name": "entity.name.class.message.scg"
+                }
+            },
+            "end": "\\}",
+            "patterns": [
+                {
+                    "include": "#enumValues"
+                }
+            ]
+        },
+        "enumValues": {
+            "begin": "([a-zA-Z][a-zA-Z_0-9]*)\\s*(=)\\s*(.+?)\\s*",
+            "beginCaptures": {
+                "1": {
+                    "name": "storage.type.scg"
+                },
+                "2": {
+                    "name": "keyword.operator.assignment.scg"
+                },
+                "3": {
+                    "name": "constant.numeric.scg"
                 }
             },
             "end": "(;)",
