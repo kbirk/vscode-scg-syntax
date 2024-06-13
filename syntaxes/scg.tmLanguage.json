@@ -37,7 +37,7 @@
             }
         },
         "typedefs": {
-            "match": "\\s*(typedef)\\s+([a-zA-Z][a-zA-Z_0-9]*)\\s*(=)\\s*(uint8|uint16|uint32|uint64|int8|int16|int32|int64|float32|float64|string)\\s*(;)",
+            "match": "\\s*(typedef)\\s+([a-zA-Z][a-zA-Z_0-9]*)\\s*(=)\\s*(uint8|uint16|uint32|uint64|int8|int16|int32|int64|float32|float64|string|uuid)\\s*(;)",
             "captures": {
                 "1": {
                     "name": "keyword.other.scg"
@@ -78,6 +78,9 @@
             "patterns": [
                 {
                     "include": "#methods"
+                },
+                {
+                    "include": "#comments"
                 }
             ]
         },
@@ -142,7 +145,12 @@
                 "1": {
                     "name": "punctuation.terminator.proto"
                 }
-            }
+            },
+            "patterns": [
+                {
+                    "include": "#comments"
+                }
+            ]
         },
         "messages": {
             "begin": "(message)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(\\{)?",
@@ -158,6 +166,9 @@
             "patterns": [
                 {
                     "include": "#fields"
+                },
+                {
+                    "include": "#comments"
                 }
             ]
         },
