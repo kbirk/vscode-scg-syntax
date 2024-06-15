@@ -15,6 +15,9 @@
             "include": "#typedefs"
         },
         {
+            "include": "#consts"
+        },
+        {
             "include": "#messages"
         },
         {
@@ -35,6 +38,34 @@
                     "name": "punctuation.terminator.scg"
                 }
             }
+        },
+        "consts": {
+            "match": "(const)\\s+(.*?)\\s+([a-zA-Z][a-zA-Z_0-9]*)\\s*(=)\\s*(.*?)\\s*(;)",
+            "captures": {
+                "1": {
+                    "name": "keyword.other.scg"
+                },
+                "2": {
+                    "name": "storage.type.scg"
+                },
+                "3": {
+                    "name": "entity.name.class"
+                },
+                "4": {
+                    "name": "keyword.operator.assignment.scg"
+                },
+                "5": {
+                    "name": "variable.map.value.scg"
+                },
+                "6": {
+                    "name": "punctuation.terminator.scg"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#comments"
+                }
+            ]
         },
         "typedefs": {
             "match": "\\s*(typedef)\\s+([a-zA-Z][a-zA-Z_0-9]*)\\s*(=)\\s*(uint8|uint16|uint32|uint64|int8|int16|int32|int64|float32|float64|string|uuid)\\s*(;)",
