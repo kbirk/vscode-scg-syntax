@@ -159,15 +159,18 @@
             ]
         },
         "enumValues": {
-            "begin": "([a-zA-Z][a-zA-Z_0-9]*)\\s*(=)\\s*(.+?)\\s*",
+            "begin": "([a-zA-Z][a-zA-Z_0-9]*)(?:\\s+\"([a-zA-Z][a-zA-Z_0-9]*)\")?\\s*(=)\\s*(.+?)\\s*",
             "beginCaptures": {
                 "1": {
                     "name": "storage.type.scg"
                 },
                 "2": {
-                    "name": "keyword.operator.assignment.scg"
+                    "name": "string.quoted.double"
                 },
                 "3": {
+                    "name": "keyword.operator.assignment.scg"
+                },
+                "4": {
                     "name": "constant.numeric.scg"
                 }
             },
